@@ -8,33 +8,36 @@ This project implements a full feature extraction system inspired by SIFT/ORB pi
 
 ## 🚀 Features
 
-- Multi-scale feature detection:
+- **Multi-scale feature detection**
   - Harris Corner Detection
   - Difference of Gaussians (DoG)
   - FAST keypoints
 
-- Scale-space construction using Gaussian pyramids
-- Rotation invariance via orientation assignment
+- **Scale-space representation**
+  - Gaussian pyramids
 
-- Custom feature descriptors:
+- **Rotation invariance**
+  - Orientation assignment for keypoints
+
+- **Custom feature descriptors**
   - SIFT-like descriptors
   - ORB-like binary descriptors
   - BRIEF descriptors
 
-- Feature matching:
+- **Feature matching**
   - Brute-force matcher
   - FLANN-based matcher
   - Lowe’s ratio test filtering
 
-- Geometric verification:
+- **Geometric verification**
   - RANSAC-based homography estimation
 
-- Evaluation under distortions:
+- **Robustness evaluation**
   - Lighting variation
   - Motion blur
   - Gaussian noise
 
-- Metrics:
+- **Evaluation metrics**
   - Matching accuracy
   - Precision / Recall / F1-score
   - Repeatability
@@ -44,12 +47,46 @@ This project implements a full feature extraction system inspired by SIFT/ORB pi
 
 ## 🧠 Motivation
 
-Feature extraction is a fundamental component in:
+Feature extraction is a fundamental building block for:
 
 - Visual SLAM
 - Structure-from-Motion (SfM)
 - Autonomous driving perception
 - Robotics navigation systems
+
+This project demonstrates a full end-to-end classical computer vision pipeline built from scratch to deeply understand how modern feature detectors and matchers work internally.
+
+---
+
+## 🏗️ Architecture Overview
+
+The pipeline follows a standard feature extraction and matching flow:
+
+
+Input Images
+↓
+Preprocessing (Grayscale / Normalization)
+↓
+Scale-Space Construction (Gaussian Pyramid)
+↓
+Keypoint Detection
+(Harris / DoG / FAST)
+↓
+Keypoint Refinement & Localization
+↓
+Orientation Assignment
+↓
+Feature Descriptor Extraction
+(SIFT-like / ORB / BRIEF)
+↓
+Feature Matching
+(BF Matcher / FLANN + Ratio Test)
+↓
+Geometric Verification
+(RANSAC Homography)
+↓
+Final Matches + Evaluation Metrics
+
 
 ---
 
@@ -57,12 +94,29 @@ Feature extraction is a fundamental component in:
 
 
 feature-extraction-pipeline/
-├── src/
-├── evaluation/
-├── examples/
-├── tests/
-├── config/
-├── results/
+│
+├── src/ # Core implementation
+│ ├── feature_detector.py
+│ ├── feature_matcher.py
+│ ├── scale_space.py
+│ ├── descriptor.py
+│ ├── orientation.py
+│ └── utils.py
+│
+├── evaluation/ # Benchmarking & metrics
+│ ├── benchmark.py
+│ └── metrics.py
+│
+├── examples/ # Demo scripts
+│ └── demo.py
+│
+├── tests/ # Unit tests
+│ └── test_detector.py
+│
+├── config/ # Configuration files
+│ └── config.yaml
+│
+├── results/ # Output visualizations
 ├── requirements.txt
 ├── setup.py
 └── README.md
@@ -75,32 +129,51 @@ feature-extraction-pipeline/
 ```bash
 git clone https://github.com/yourusername/feature-extraction-pipeline.git
 cd feature-extraction-pipeline
+
 python -m venv venv
-venv\Scripts\activate
+venv\Scripts\activate   # Windows
+
 pip install -r requirements.txt
-▶️ Quick Start
+
+## ▶️ Quick Start
 python examples/demo.py
-🧪 Benchmark
+
+## 🧪 Benchmark
 python -m evaluation.benchmark --config config/config.yaml
-📊 Metrics
+
+Evaluates performance under:
+
+Lighting changes
+Motion blur
+Noise injection
+
+## 📊 Evaluation Metrics
 Matching accuracy
 Precision / Recall / F1-score
-Repeatability
-Localization error
-🛠️ Tech Stack
-Python
+Feature repeatability
+Localization error (pixel distance)
+RANSAC inlier ratio
+
+#🛠️ Tech Stack
+Python 3.8+
 OpenCV
 NumPy
 SciPy
 Matplotlib
 PyYAML
 PyTest
-👤 Author
+
+## 🧩 Architecture Diagram (Visual)
+
+<img width="636" height="233" alt="image" src="https://github.com/user-attachments/assets/06d43790-a8b2-4408-8f17-a956665ab48e" />
+
+
+## 👤 Author
 
 Malavika Priyesh
-GitHub: https://github.com/yourusername
-LinkedIn: https://linkedin.com/in/your-profile
 
-📄 License
+GitHub: https://github.com/MalavikaPriyesh
+LinkedIn: https://linkedin.com/in/malavikapriyesh
+## 📄 License
 
-MIT License
+This project is licensed under the MIT License.
