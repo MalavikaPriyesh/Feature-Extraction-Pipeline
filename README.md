@@ -139,8 +139,8 @@ python -m evaluation.benchmark --config config/config.yaml
 
 **Malavika Priyesh**
 
-- GitHub: [github.com/yourusername](https://github.com/yourusername)
-- LinkedIn: [linkedin.com/in/your-profile](https://linkedin.com/in/your-profile)
+- GitHub: [github.com/yourusername](https://github.com/MalavikaPriyesh)
+- LinkedIn: [linkedin.com/in/your-profile](https://linkedin.com/in/malavikapriyesh)
 
 ---
 
